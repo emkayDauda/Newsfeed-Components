@@ -145,6 +145,20 @@ function createComponent({title, date, firstParagraph, secondParagraph, thirdPar
       articleClass.classList.toggle('article-open')
     });
 
+
+    const buttonClose = document.createElement('span');
+    buttonClose.classList.add('expandButton');
+
+    buttonClose.textContent = 'Close';
+    buttonClose.style.marginLeft = '5rem';
+
+    buttonClose.addEventListener('click', e => {
+      articleClass.style.display = 'none';
+    })
+
+    articleClass.appendChild(buttonClose);
+
+
     return articleClass;
 }
 
