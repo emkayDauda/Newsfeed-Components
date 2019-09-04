@@ -115,11 +115,16 @@ const data = [
 
 function createComponent(){
   const articleClass = document.createElement('div');
+  articleClass.classList.add('article')
 
   const title = document.createElement('h2');
 
   const date = document.createElement('p');
+  date.classList.add('date')
 
   const [firstParagraph , secondParagraph, thirdParagraph] = ['p', 'p', 'p']
     .map(element => document.createElement(element));
+
+    const button = document.createElement('span')
+    button.classList.add('expandButton')
 }
