@@ -113,31 +113,31 @@ const data = [
 
 */
 
-function createComponent({articleTitle, articleDate, firstP, secondP, thirdP}){
+function createComponent({title, date, firstParagraph, secondParagraph, thirdParagraph}){
   const articleClass = document.createElement('div');
   articleClass.classList.add('article')
 
-  const title = document.createElement('h2');
-  title.textContent = articleTitle;
+  const titleHTML = document.createElement('h2');
+  titleHTML.textContent = title;
 
-  const date = document.createElement('p');
-  date.classList.add('date');
-  date.textContent = articleDate;
+  const dateHTML = document.createElement('p');
+  dateHTML.classList.add('date');
+  dateHTML.textContent = date;
 
-  const [firstParagraph , secondParagraph, thirdParagraph] = ['p', 'p', 'p']
+  const [firstParagraphHTML , secondParagraphHTML, thirdParagraphHTML] = ['p', 'p', 'p']
     .map(element => document.createElement(element));
 
-    firstParagraph.textContent = firstP;
-    secondParagraph.textContent = secondP;
-    thirdParagraph.textContent = thirdP;
+    firstParagraphHTML.textContent = firstParagraph;
+    secondParagraphHTML.textContent = secondParagraph;
+    thirdParagraphHTML.textContent = thirdParagraph;
     const button = document.createElement('span');
     button.classList.add('expandButton');
 
-    articleClass.appendChild(title);
-    articleClass.appendChild(data);
-    articleClass.appendChild(firstParagraph);
-    articleClass.appendChild(secondParagraph);
-    articleClass.appendChild(thirdParagraph);
+    articleClass.appendChild(titleHTML);
+    articleClass.appendChild(dateHTML);
+    articleClass.appendChild(firstParagraphHTML);
+    articleClass.appendChild(secondParagraphHTML);
+    articleClass.appendChild(thirdParagraphHTML);
 
     button.addEventListener('click', e => {
       articleClass.classList.toggle('article-open')
@@ -145,3 +145,23 @@ function createComponent({articleTitle, articleDate, firstP, secondP, thirdP}){
 
     return articleClass;
 }
+
+data.push({
+  title: "My Article and I",
+
+  date: "Whatever date today is...",
+
+  firstParagraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, maxime? Nemo in voluptatem eos iure rerum. Sunt dignissimos porro beatae exercitationem, optio laboriosam illum ipsa nihil tenetur velit recusandae eius.",
+
+  secondParagraph: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit placeat repudiandae repellendus, quae alias facere, in ad itaque tenetur quisquam autem consectetur eos commodi? Impedit consequuntur alias dicta iusto quasi porro eaque. Pariatur architecto ipsum at accusamus optio blanditiis autem aliquam, dolorem quos perferendis, doloribus, culpa nobis tempora sequi ex? Velit, sint necessitatibus! Nemo consectetur in harum quam exercitationem facere quae, deleniti quod natus, minima aspernatur. Numquam adipisci accusantium iste?",
+  
+  thirdParagraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis sapiente laborum pariatur voluptatem velit quis sint mollitia aliquid earum? Voluptates, a eius voluptate corporis ipsam non commodi laudantium voluptas officiis hic nemo asperiores, quos expedita, recusandae aliquam optio velit adipisci! Mollitia necessitatibus deleniti officia vitae dolorem enim omnis assumenda expedita ullam vero, exercitationem harum, odit voluptatem ut fugiat beatae, qui delectus praesentium? Ut, illum. Animi molestias corrupti aut omnis. Magni provident magnam aspernatur laudantium porro corrupti eaque minima enim iste?"  
+})
+
+const articleContainer = document.querySelector('.articles');
+data.map(article =>{
+
+  const madeArticle = createComponent(article);
+  articleContainer.appendChild(madeArticle);
+  return madeArticle;
+})
