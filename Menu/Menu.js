@@ -42,9 +42,10 @@ function createMenuComponent(listItemsArray){
   listItemsArray.forEach(listItem => {
     const item = document.createElement('li');
     item.textContent = listItem;
-    menu.appendChild(item);
+    list.appendChild(item);
   });
 
+  menu.appendChild(list);
   return menu;
 }
 
