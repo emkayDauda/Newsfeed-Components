@@ -138,6 +138,8 @@ function createComponent({title, date, firstParagraph, secondParagraph, thirdPar
     articleClass.appendChild(firstParagraphHTML);
     articleClass.appendChild(secondParagraphHTML);
     articleClass.appendChild(thirdParagraphHTML);
+    articleClass.appendChild(button);
+    button.textContent = "Click Me";
 
     button.addEventListener('click', e => {
       articleClass.classList.toggle('article-open')

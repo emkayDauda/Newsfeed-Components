@@ -50,4 +50,10 @@ function createMenuComponent(listItemsArray){
 
 const menuComponent = createMenuComponent(menuItems);
 // document.prepend(menuComponent);
-document.querySelector('body').prepend(menuComponent)
+document.querySelector('body').prepend(menuComponent);
+
+const menuButton = document.querySelector('.menu-button');
+
+menuButton.addEventListener('click', e => {
+  menuComponent.classList.toggle('menu--open');
+})
