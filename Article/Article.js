@@ -113,18 +113,35 @@ const data = [
 
 */
 
-function createComponent(){
+function createComponent({articleTitle, articleDate, firstP, secondP, thirdP}){
   const articleClass = document.createElement('div');
   articleClass.classList.add('article')
 
   const title = document.createElement('h2');
+  title.textContent = articleTitle;
 
   const date = document.createElement('p');
-  date.classList.add('date')
+  date.classList.add('date');
+  date.textContent = articleDate;
 
   const [firstParagraph , secondParagraph, thirdParagraph] = ['p', 'p', 'p']
     .map(element => document.createElement(element));
 
-    const button = document.createElement('span')
-    button.classList.add('expandButton')
+    firstParagraph.textContent = firstP;
+    secondParagraph.textContent = secondP;
+    thirdParagraph.textContent = thirdP;
+    const button = document.createElement('span');
+    button.classList.add('expandButton');
+
+    articleClass.appendChild(title);
+    articleClass.appendChild(data);
+    articleClass.appendChild(firstParagraph);
+    articleClass.appendChild(secondParagraph);
+    articleClass.appendChild(thirdParagraph);
+
+    button.addEventListener('click', e => {
+      articleClass.classList.toggle('article-open')
+    });
+
+    return articleClass;
 }
