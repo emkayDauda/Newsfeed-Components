@@ -112,3 +112,72 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createComponent({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+  const articleClass = document.createElement('div');
+  articleClass.classList.add('article')
+
+  const titleHTML = document.createElement('h2');
+  titleHTML.textContent = title;
+
+  const dateHTML = document.createElement('p');
+  dateHTML.classList.add('date');
+  dateHTML.textContent = date;
+
+  const [firstParagraphHTML , secondParagraphHTML, thirdParagraphHTML] = ['p', 'p', 'p']
+    .map(element => document.createElement(element));
+
+    firstParagraphHTML.textContent = firstParagraph;
+    secondParagraphHTML.textContent = secondParagraph;
+    thirdParagraphHTML.textContent = thirdParagraph;
+    const button = document.createElement('span');
+    button.classList.add('expandButton');
+
+    articleClass.appendChild(titleHTML);
+    articleClass.appendChild(dateHTML);
+    articleClass.appendChild(firstParagraphHTML);
+    articleClass.appendChild(secondParagraphHTML);
+    articleClass.appendChild(thirdParagraphHTML);
+    articleClass.appendChild(button);
+    button.textContent = "Click Me";
+
+    button.addEventListener('click', e => {
+      articleClass.classList.toggle('article-open')
+    });
+
+
+    const buttonClose = document.createElement('span');
+    buttonClose.classList.add('expandButton');
+
+    buttonClose.textContent = 'Close';
+    buttonClose.style.marginLeft = '5rem';
+
+    buttonClose.addEventListener('click', e => {
+      articleClass.style.display = 'none';
+    })
+
+    articleClass.appendChild(buttonClose);
+
+
+    return articleClass;
+}
+
+data.push({
+  title: "My Article and I",
+
+  date: "Whatever date today is...",
+
+  firstParagraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, maxime? Nemo in voluptatem eos iure rerum. Sunt dignissimos porro beatae exercitationem, optio laboriosam illum ipsa nihil tenetur velit recusandae eius.",
+
+  secondParagraph: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit placeat repudiandae repellendus, quae alias facere, in ad itaque tenetur quisquam autem consectetur eos commodi? Impedit consequuntur alias dicta iusto quasi porro eaque. Pariatur architecto ipsum at accusamus optio blanditiis autem aliquam, dolorem quos perferendis, doloribus, culpa nobis tempora sequi ex? Velit, sint necessitatibus! Nemo consectetur in harum quam exercitationem facere quae, deleniti quod natus, minima aspernatur. Numquam adipisci accusantium iste?",
+  
+  thirdParagraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis sapiente laborum pariatur voluptatem velit quis sint mollitia aliquid earum? Voluptates, a eius voluptate corporis ipsam non commodi laudantium voluptas officiis hic nemo asperiores, quos expedita, recusandae aliquam optio velit adipisci! Mollitia necessitatibus deleniti officia vitae dolorem enim omnis assumenda expedita ullam vero, exercitationem harum, odit voluptatem ut fugiat beatae, qui delectus praesentium? Ut, illum. Animi molestias corrupti aut omnis. Magni provident magnam aspernatur laudantium porro corrupti eaque minima enim iste?"  
+})
+
+const articleContainer = document.querySelector('.articles');
+data.map(article =>{
+
+  const madeArticle = createComponent(article);
+  articleContainer.appendChild(madeArticle);
+  return madeArticle;
+})
